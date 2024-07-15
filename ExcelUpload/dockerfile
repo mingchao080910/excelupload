@@ -1,0 +1,18 @@
+# 使用官方 Node.js 镜像作为基础镜像
+FROM node:20.15.1
+
+# 设置工作目录
+WORKDIR /
+
+# 复制 package.json 和 package-lock.json 并安装依赖
+COPY package*.json ./
+RUN npm install
+
+# 安装 Angular CLI
+RUN npm install -g @angular/cli
+
+# 复制所有文件到工作目录
+COPY . .
+
+# 构建 Angular 应用
+RUN ng build --prod
