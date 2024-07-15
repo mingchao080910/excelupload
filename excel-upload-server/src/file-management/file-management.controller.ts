@@ -16,6 +16,7 @@ import { UpdateFileManagementDto } from './dto/update-file-management.dto';
 export class FileManagementController {
   constructor(private readonly fileManagementService: FileManagementService) {}
 
+  // 上传数据
   @Post()
   create(@Body() createFileManagementDto: CreateFileManagementDto) {
     // 传递数据新建到数据库里
