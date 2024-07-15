@@ -1,0 +1,21 @@
+<a nz-button nzType="link" (click)="showModal()"> Upload </a>
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="FileUpload"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+>
+  <ng-container *nzModalContent>
+    <nz-upload
+      [nzMultiple]="true"
+      [nzFileList]="fileList"
+      [nzAccept]="'.xlsx'"
+      [nzCustomRequest]="uploadfile"
+    >
+      <button nz-button>
+        <span nz-icon nzType="upload"></span>
+        Upload
+      </button>
+    </nz-upload>
+  </ng-container>
+</nz-modal>

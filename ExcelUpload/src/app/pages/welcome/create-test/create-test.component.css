@@ -1,0 +1,17 @@
+.testcontainer {
+  display: grid;
+  grid-template-rows: 6;
+  width: 600px;
+  grid-gap: 15px;
+}
+.priButton {
+  margin-right: 8px;
+  margin-bottom: 12px;
+  width: 200px;
+}
+
+#downloadlinks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+

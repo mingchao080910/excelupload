@@ -1,0 +1,75 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="Create Test"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+  nzWidth="50vw"
+
+>
+  <ng-container *nzModalContent>
+    <main class="testcontainer">
+      <div>
+        <label for="Measurementitems">Measurementitems : </label>
+        <input [(ngModel)]="measurementItems" nz-input placeholder="Measurementitems" />
+      </div>
+
+      <div>
+        <label for="Time">Time : </label>
+        <input
+          nz-input
+          placeholder="Time"
+          [defaultValue]="timeOfNow"
+          [disabled]="true"
+          style="width: 400px"
+        />
+      </div>
+      <div>
+        <label for="Phone">Phone : </label>
+        <app-multiple-select
+          [listOfOption]="listOfOptionPhone"
+          ControlName="Phone"
+          (SelectionChanged)="SelectionChanged($event)"
+        />
+      </div>
+      <div>
+        <label for="Band">Band : </label>
+        <app-multiple-select
+          [listOfOption]="listOfOptionBand"
+          ControlName="Band"
+          (SelectionChanged)="SelectionChanged($event)"
+        />
+      </div>
+      <div>
+        <label for="Featurename">Feature Name: </label>
+        <app-multiple-select
+          [listOfOption]="listOfOptionFeatureName"
+          ControlName="Featurename"
+          (SelectionChanged)="SelectionChanged($event)"
+        />
+      </div>
+      <div>
+        <label for="Featureswitch">Feature Switch: </label>
+        <nz-switch [(ngModel)]="switchValue"></nz-switch>
+      </div>
+
+      <button
+        nz-button
+        nzType="primary"
+        class="priButton"
+        (click)="createDownloadLink()"
+      >
+        Create Download Links
+      </button>
+      <div id="downloadlinks">
+        @for (item of downloadLinks; track item){
+        <a
+          [href]="'http://localhost:3000/fileManagement/download/' + item"
+          download
+        >
+          {{ item }}</a
+        >
+        }
+      </div>
+    </main>
+  </ng-container>
+</nz-modal>

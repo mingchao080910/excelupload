@@ -1,0 +1,21 @@
+<!-- ngModel必须导入formsModule -->
+
+<nz-select
+  [nzMaxTagCount]="5"
+  [nzMaxTagPlaceholder]="tagPlaceHolder"
+  nzMode="multiple"
+  nzPlaceHolder="Please select"
+  [(ngModel)]="listOfSelectedValue"
+  (ngModelChange)="listOfSelectedChanged()"
+  required
+>
+  <nz-option
+    *ngFor="let item of listOfOption"
+    [nzLabel]="item"
+    [nzValue]="item"
+  ></nz-option>
+</nz-select>
+<!-- 这个template不显示,但是被引用 -->
+<ng-template #tagPlaceHolder let-selectedList
+  >and {{ selectedList.length }} more selected</ng-template
+>
