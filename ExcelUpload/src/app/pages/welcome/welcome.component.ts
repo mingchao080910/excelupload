@@ -20,9 +20,6 @@ export class WelcomeComponent {
   }
   hideModal(event: any) {
     this.isVisible = false;
-    // 刷新表
-    console.log(this.refresh)
     this.refresh = this.refresh + 1;
-    console.log(this.refresh)
   }
 }

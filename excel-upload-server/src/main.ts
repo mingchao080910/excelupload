@@ -7,7 +7,7 @@ async function bootstrap() {
   app.enableCors();
   console.log(join(__dirname,"../browser"))
   app.useStaticAssets(join(__dirname,"../browser"));  
-
+  app.setGlobalPrefix('api');
   // E:\angularProject\ExcelUpload\dist\excel-upload
   await app.listen(3000);
 }

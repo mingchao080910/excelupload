@@ -4,7 +4,6 @@
   (nzOnCancel)="handleCancel()"
   (nzOnOk)="handleOk()"
   nzWidth="50vw"
-
 >
   <ng-container *nzModalContent>
     <main class="testcontainer">
@@ -63,8 +62,10 @@
       <div id="downloadlinks">
         @for (item of downloadLinks; track item){
         <a
-          [href]="'http://localhost:3000/fileManagement/download/' + item"
+          [href]="'/api/fileManagement/download/' + item"
           download
+         (click)="clickedItems.add(item)"
+          [ngStyle]="{'color': clickedItems.has(item) ? 'red' : 'blue'}"
         >
           {{ item }}</a
         >

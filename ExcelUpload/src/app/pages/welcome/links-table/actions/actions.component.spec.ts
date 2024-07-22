@@ -11,7 +11,7 @@ describe('ActionsComponent', () => {
       imports: [ActionsComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(ActionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

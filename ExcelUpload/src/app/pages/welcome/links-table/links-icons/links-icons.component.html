@@ -1,0 +1,11 @@
+@for (item of links; track $index) {<span
+  nz-icon
+  nz-tooltip
+  [nzTooltipTitle]="item"
+  [nzTheme]="'twotone'"
+  [nzTwotoneColor]="uploadedLinks.has(item) ? 'blue' : '#eb2f96'"
+  nzTooltipPlacement="top"
+  [nzTooltipArrowPointAtCenter]="true"
+  nzType="book"
+></span
+>}

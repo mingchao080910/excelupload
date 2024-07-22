@@ -1,0 +1,11 @@
+<button (click)="showModalControl()">Add</button>
+<app-input-modal
+  [(isVisible)]="isVisible"
+  [values]="values"
+  (valuesChange)="hanndelValuesChange($event)"
+></app-input-modal>
+<app-crudtable
+  [getAllURL]="'/api/feature'"
+  [deleteOneURL]="'/api/feature/delete'"
+  [colDefs]="colDefs"
+></app-crudtable>

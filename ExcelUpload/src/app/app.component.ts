@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { FormsModule } from '@angular/forms';
+import { AuthServiceService } from './auth-service.service';
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -13,6 +15,7 @@ import { FormsModule } from '@angular/forms';
     RouterOutlet,
     NzIconModule,
     NzLayoutModule,
+    RouterModule,
     NzMenuModule,
     FormsModule,
   ],
@@ -21,4 +24,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class AppComponent {
   isCollapsed = false;
+  constructor(private auth:AuthServiceService){}
+  Logout(){
+   this.auth.logout()
+  }
 }

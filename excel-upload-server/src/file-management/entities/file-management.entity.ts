@@ -6,7 +6,7 @@ export class FileManagement {
   @Column()
   MeasurementItems: string;
   @Column()
-  Time: Date;
+  Time: string;
   @Column()
   Phone: string;
   @Column()
@@ -15,6 +15,8 @@ export class FileManagement {
   FeatureName: string;
   @Column()
   FeatureSwitch: boolean;
-  @Column()
+  @Column('text')
   Links: string;
+  @Column('text')
+  UploadedLinks: string;
 }

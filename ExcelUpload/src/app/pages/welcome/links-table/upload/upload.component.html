@@ -4,18 +4,22 @@
   nzTitle="FileUpload"
   (nzOnCancel)="handleCancel()"
   (nzOnOk)="handleOk()"
+  [nzOkDisabled]="OKDisabled"
 >
   <ng-container *nzModalContent>
     <nz-upload
       [nzMultiple]="true"
       [nzFileList]="fileList"
       [nzAccept]="'.xlsx'"
-      [nzCustomRequest]="uploadfile"
+      [nzBeforeUpload]="beforeUpload"
     >
       <button nz-button>
         <span nz-icon nzType="upload"></span>
         Upload
       </button>
     </nz-upload>
+    @if (fileList.length > 0) {
+    <button (click)="uploadfile()" style="color: red;font-size: larger">确定上传</button>
+    }
   </ng-container>
 </nz-modal>

@@ -1,0 +1,11 @@
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="Modal"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+>
+  <ng-container *nzModalContent>
+    <app-input-controls (valueChange)="handleValueChange($event)"></app-input-controls>
+  </ng-container>
+</nz-modal>
