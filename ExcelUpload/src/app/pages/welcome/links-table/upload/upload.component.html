@@ -1,4 +1,5 @@
 <a nz-button nzType="link" (click)="showModal()"> Upload </a>
+
 <nz-modal
   [(nzVisible)]="isVisible"
   nzTitle="FileUpload"
@@ -7,6 +8,18 @@
   [nzOkDisabled]="OKDisabled"
 >
   <ng-container *nzModalContent>
+    <div id="downloadlinks">
+      @for (item of downloadLinks; track item){
+      <a
+        [href]="'/api/fileManagement/download/' + item"
+        download
+        (click)="clickedItems.add(item)"
+        [ngStyle]="{ color: clickedItems.has(item) ? 'red' : 'blue' }"
+      >
+        {{ item }}</a
+      >
+      }
+    </div>
     <nz-upload
       [nzMultiple]="true"
       [nzFileList]="fileList"
@@ -19,7 +32,9 @@
       </button>
     </nz-upload>
     @if (fileList.length > 0) {
-    <button (click)="uploadfile()" style="color: red;font-size: larger">确定上传</button>
+    <button (click)="uploadfile()" style="color: red; font-size: larger">
+      确定上传
+    </button>
     }
   </ng-container>
 </nz-modal>

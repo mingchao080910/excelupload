@@ -22,6 +22,7 @@ export class ActionsComponent implements ICellRendererAngularComp {
   public params!: any;
   agInit(params: ICellRendererParams): void {
     this.params = params;
+    console.log('action==>',this.params)
   }
 
   // Return Cell Value

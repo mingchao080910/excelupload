@@ -4,10 +4,11 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzUploadFile, NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-upload',
   standalone: true,
-  imports: [NzUploadModule, NzModalModule, NzMessageModule],
+  imports: [NzUploadModule, NzModalModule, NzMessageModule, CommonModule],
   templateUrl: './upload.component.html',
   styleUrl: './upload.component.css',
 })
@@ -15,14 +16,22 @@ export class UploadComponent {
   fileList: NzUploadFile[] = [];
   isVisible = false;
   OKDisabled = true;
+  clickedItems = new Set<string>(); //点击a标签后的颜色变化
   @Input()
   id!: number;
-  constructor(
-    private http: HttpClient,
-    private message: NzMessageService,
-    private router: Router
-  ) {}
-
+  // 传进来的行数据
+  @Input()
+  rowData: any;
+  downloadLinks: string[] = [];
+  constructor(private http: HttpClient, private message: NzMessageService) {}
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    console.log('启动');
+    console.log(this.rowData);
+    this.downloadLinks = this.rowData.Links.split('`');
+    console.log(this.downloadLinks);
+  }
   showModal(): void {
     this.isVisible = true;
   }
